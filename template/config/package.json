@@ -1,0 +1,34 @@
+{
+  "name": "web201808",
+  "gameDir": "web201808",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node gulpfile.js",
+    "restore": "gulp restore",
+    "restore:html": "gulp restore:html",
+    "restore:css": "gulp restore:css",
+    "restore:js": "gulp restore:js",
+    "restore:inc": "gulp restore:inc",
+    "restore:image": "gulp restore:image",
+    "build": "gulp build",
+    "build:html": "gulp build:html",
+    "build:css": "gulp build:css",
+    "build:js": "gulp build:js",
+    "build:inc": "gulp build:inc",
+    "build:image": "gulp build:image",
+    "zip": "gulp zip"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-iconv": "0.0.1",
+    "gulp-replace": "^0.6.1",
+    "gulp-zip": "^4.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "targetLnik": "//game.gtimg.cn/images/game/esport/web201808/",
+  "targetDir": "esport/web201808"
+}
