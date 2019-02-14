@@ -1,6 +1,6 @@
 {
-  "name": "web201808",
-  "gameDir": "web201808",
+  "name": "a20190215newtrackm",
+  "gameDir": "a20190215newtrackm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,6 +29,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "targetLnik": "//game.gtimg.cn/images/game/esport/web201808/",
-  "targetDir": "esport/web201808"
+  "targetLnik": ""
 }

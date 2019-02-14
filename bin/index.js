@@ -14,20 +14,28 @@ const packageJson = require('../template/config/package.json');
 // package包名
 const packageName = curPath.split('\\')[curPath.split('\\').length - 1];
 
-console.log(2)
-
 commander
-  .command('init <targetLnik> [targetDir]')
+  .command('init [targetLnik] [targetDir]')
   .action((targetLnik, targetDir) => {
     addPackageInfo({
       'name': packageName,
       'gameDir': packageName,
-      'targetLnik': targetLnik,
+      'targetLnik': targetLnik || '',
       'targetDir': targetDir
     });
     exists(temConfigPath, curPath, copy);
     console.log( chalk.green('\n 安装项目配置成功') )
     console.log( chalk.green('\n 执行 npm i 安装依赖') )
+  })
+
+commander
+  .command('set <targetLnik>')
+  .action((targetLnik) => {
+    addPackageInfo({
+      'targetLnik': targetLnik,
+    });
+    exists(temConfigPath, curPath, copy);
+    console.log( chalk.green('\n 修改分离地址成功') )
   })
 
 // 复制目录
