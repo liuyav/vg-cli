@@ -14,6 +14,8 @@ const packageJson = require('../template/config/package.json');
 // package包名
 const packageName = curPath.split('\\')[curPath.split('\\').length - 1];
 
+console.log(2)
+
 commander
   .command('init <targetLnik> [targetDir]')
   .action((targetLnik, targetDir) => {
