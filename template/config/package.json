@@ -1,6 +1,6 @@
 {
-  "name": "a20190215newtrackm",
-  "gameDir": "a20190215newtrackm",
+  "name": "a20190222jhz",
+  "gameDir": "a20190222jhz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,5 +29,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "targetLnik": ""
+  "targetLnik": "//game.gtimg.cn/images/jxqy/cp/a20190222jhz/"
 }

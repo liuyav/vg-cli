@@ -12,18 +12,12 @@ let targetLnik = gameInfo.targetLnik;
 let targetDir = gameInfo.targetDir;
 
 const isPhone = gameDir[0] === 'm';
-const isAct = gameDir[0] === 'a';
 
-if (gameInfo.targetDir) { // 传递了目标目录参数（可自定义）
+if (gameInfo.targetDir) { // 传递了目标目录参数
   gameDir = gameInfo.targetDir;
-} else if (!gameInfo.targetDir && isPhone) { // 未传递目标目录参数，并且是移动端
+} else if (!gameInfo.targetDir && isPhone) { // 未传递目标目录参数，并且是手机
   gameDir = `m/${gameDir}`;
-} else if (!gameInfo.targetDir && isAct) { // 未传递目标目录参数，并且是活动
-  gameDir = `cp/${gameDir}`;
 }
-
-// 统一处理为   dir/dir
-gameDir = gameDir.replace(/^\/{1,}|\/{1,}$/g, '');
 
 //路径还原
 gulp.task('restore:html', () => {

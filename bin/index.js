@@ -1,17 +1,17 @@
 #!/usr/bin/env node
-
 const commander = require('commander');
+const inquirer = require('inquirer');
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs');
 const stat = fs.stat;
-const temPath = path.resolve(__dirname, '../template');
 const curPath = process.cwd();
+const temPath = path.resolve(__dirname, '../template');
 const temConfigPath = path.join(temPath, 'config');
 const packagePath = path.join(temConfigPath, 'package.json');
 const packageJson = require('../template/config/package.json');
 
-// package包名
+// package包名（从当前命令行位置取得）
 const packageName = curPath.split('\\')[curPath.split('\\').length - 1];
 
 commander
@@ -32,11 +32,29 @@ commander
   .command('set <targetLnik>')
   .action((targetLnik) => {
     addPackageInfo({
-      'targetLnik': targetLnik,
+      'targetLnik': targetLnik || '',
+      'targetDir': targetDir
     });
     exists(temConfigPath, curPath, copy);
     console.log( chalk.green('\n 修改分离地址成功') )
   })
+
+commander.parse(process.argv);
+
+// 改写package.json
+function addPackageInfo(opt) {
+  fs.readFile(packagePath,'utf8',function (err, data) {
+    if(err) console.log(err);
+    var d = JSON.parse(data);
+
+    for (var key in opt) {
+      d[key] = opt[key]
+    }
+
+    var t = JSON.stringify(d, null, '  ');
+    fs.writeFileSync(packagePath, t)
+  });
+}
 
 // 复制目录
 function copy(src, dst){
@@ -89,20 +107,3 @@ function exists(src, dst, callback){
     }
   });
 };
- 
-// 改写package.json
-function addPackageInfo(opt) {
-  fs.readFile(packagePath,'utf8',function (err, data) {
-    if(err) console.log(err);
-    var d=JSON.parse(data);
-
-    for (var key in opt) {
-      d[key] = opt[key]
-    }
-    
-    var t = JSON.stringify(d, null, '  ');
-    fs.writeFileSync(packagePath, t)
-  });
-}
-
-commander.parse(process.argv);
